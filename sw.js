@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kas-billing-pwa-v5';
+const CACHE_NAME = 'kas-billing-pwa-v7';
 const ASSETS = [
   './',
   './index.html',
@@ -26,7 +26,7 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = e.request.url || '';
-  if (url.includes('script.google.com')) return;
+  if (url.includes('script.google.com') || url.includes('googleusercontent.com')) return;
 
   e.respondWith(
     caches.match(e.request).then(cached => {
